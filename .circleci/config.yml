@@ -633,21 +633,21 @@ jobs:
   py310-core:
     <<: *common
     docker:
-      - image: circleci/python:3.10
+      - image: cimg/python:3.10.0
     environment:
       TOXENV: py310-core
 
   py310-ens:
     <<: *common
     docker:
-      - image: circleci/python:3.10
+      - image: cimg/python:3.10.0
     environment:
       TOXENV: py310-ens
 
   py310-ethpm:
     <<: *ethpm_steps
     docker:
-      - image: circleci/python:3.10
+      - image: cimg/python:3.10.0
     environment:
       TOXENV: py310-ethpm
       # Please don't use this key for any shenanigans
@@ -656,7 +656,7 @@ jobs:
   py310-integration-goethereum-ipc:
     <<: *geth_steps
     docker:
-      - image: circleci/python:3.10
+      - image: cimg/python:3.10.0
     environment:
       TOXENV: py310-integration-goethereum-ipc
       GETH_VERSION: v1.10.8
@@ -664,7 +664,7 @@ jobs:
   py310-integration-goethereum-http:
     <<: *geth_steps
     docker:
-      - image: circleci/python:3.10
+      - image: cimg/python:3.10.0
     environment:
       TOXENV: py310-integration-goethereum-http
       GETH_VERSION: v1.10.8
@@ -672,7 +672,7 @@ jobs:
   py310-integration-goethereum-ws:
     <<: *geth_steps
     docker:
-      - image: circleci/python:3.10
+      - image: cimg/python:3.10.0
     environment:
       TOXENV: py310-integration-goethereum-ws
       GETH_VERSION: v1.10.8
@@ -680,7 +680,7 @@ jobs:
   py310-integration-ethtester-pyevm:
     <<: *common
     docker:
-      - image: circleci/python:3.10
+      - image: cimg/python:3.10.0
     environment:
       TOXENV: py310-integration-ethtester
       ETHEREUM_TESTER_CHAIN_BACKEND: eth_tester.backends.PyEVMBackend
@@ -688,14 +688,14 @@ jobs:
   py310-wheel-cli:
     <<: *common
     docker:
-      - image: circleci/python:3.10
+      - image: cimg/python:3.10.0
         environment:
           TOXENV: py310-wheel-cli
 
   benchmark:
     <<: *geth_steps
     docker:
-      - image: circleci/python:3.10
+      - image: cimg/python:3.10.0
     environment:
       TOXENV: benchmark
       GETH_VERSION: v1.10.11
