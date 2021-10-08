@@ -2,6 +2,7 @@ import asyncio
 import json
 import logging
 import os
+import sys
 from threading import (
     Thread,
 )
@@ -10,6 +11,7 @@ from types import (
 )
 from typing import (
     Any,
+    Dict,
     Optional,
     Type,
     Union,
@@ -38,6 +40,13 @@ from web3.types import (
 
 RESTRICTED_WEBSOCKET_KWARGS = {'uri', 'loop'}
 DEFAULT_WEBSOCKET_TIMEOUT = 10
+
+
+def _loop_if_py_lt_38(loop: asyncio.AbstractEventLoop) -> Dict[str, Any]:
+    """
+    Helper for the removal of the loop argument in Python 3.10.
+    """
+    return {"loop": loop} if sys.version_info[:2] < (3, 8) else {}
 
 
 def _start_event_loop(loop: asyncio.AbstractEventLoop) -> None:
@@ -70,7 +79,7 @@ class PersistentWebSocket:
     async def __aenter__(self) -> WebSocketClientProtocol:
         if self.ws is None:
             self.ws = await connect(
-                uri=self.endpoint_uri, loop=self.loop, **self.websocket_kwargs
+                uri=self.endpoint_uri, **_loop_if_py_lt_38(self.loop), **self.websocket_kwargs
             )
         return self.ws
 
