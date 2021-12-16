@@ -6,16 +6,16 @@ from setuptools import (
 )
 
 extras_require = {
-    'tester': [
+    "tester": [
         "eth-tester[py-evm]==v0.6.0-beta.4",
         "py-geth>=3.6.0,<4",
     ],
-    'linter': [
+    "linter": [
         "flake8>=3.8.3,<=3.9.2",
         "isort>=4.2.15,<=5.9.3",
         "mypy>=0.812,<=0.910",
     ],
-    'docs': [
+    "docs": [
         "mock",
         "sphinx-better-theme>=0.1.4,<=0.13",
         "click>=5.1,<=8.0.1",
@@ -29,9 +29,9 @@ extras_require = {
         "toposort>=1.4,<=2.0.2",
         "towncrier>=18.5.0,<=21.3.0",
         "urllib3",
-        "wheel"
+        "wheel",
     ],
-    'dev': [
+    "dev": [
         "bumpversion",
         "flaky>=3.7.0,<4",
         "hypothesis>=3.31.2,<6",
@@ -46,30 +46,30 @@ extras_require = {
         "tqdm>4.32,<5",
         "twine>=1.13,<2",
         "pluggy==0.13.1",
-        "when-changed>=0.3.0,<0.4"
-    ]
+        "when-changed>=0.3.0,<0.4",
+    ],
 }
 
-extras_require['dev'] = (
-    extras_require['tester']
-    + extras_require['linter']
-    + extras_require['docs']
-    + extras_require['dev']
+extras_require["dev"] = (
+    extras_require["tester"]
+    + extras_require["linter"]
+    + extras_require["docs"]
+    + extras_require["dev"]
 )
 
-with open('./README.md') as readme:
+with open("./README.md") as readme:
     long_description = readme.read()
 
 setup(
-    name='web3',
+    name="web3",
     # *IMPORTANT*: Don't manually change the version here. Use the 'bumpversion' utility.
-    version='5.25.0',
+    version="5.25.0",
     description="""Web3.py""",
-    long_description_content_type='text/markdown',
+    long_description_content_type="text/markdown",
     long_description=long_description,
-    author='Piper Merriam',
-    author_email='pipermerriam@gmail.com',
-    url='https://github.com/ethereum/web3.py',
+    author="Piper Merriam",
+    author_email="pipermerriam@gmail.com",
+    url="https://github.com/ethereum/web3.py",
     include_package_data=True,
     install_requires=[
         "aiohttp>=3.7.4.post0,<4",
@@ -87,27 +87,27 @@ setup(
         "requests>=2.16.0,<3.0.0",
         # remove typing_extensions after python_requires>=3.8, see web3._utils.compat
         "typing-extensions>=3.7.4.1,<4;python_version<'3.8'",
-        "websockets>=9.1,<=10.0",
+        "websockets>=9.1,<=10.1",
     ],
-    python_requires='>=3.6,<4',
+    python_requires=">=3.6,<4",
     extras_require=extras_require,
-    py_modules=['web3', 'ens', 'ethpm'],
+    py_modules=["web3", "ens", "ethpm"],
     entry_points={"pytest11": ["pytest_ethereum = web3.tools.pytest_ethereum.plugins"]},
     license="MIT",
     zip_safe=False,
-    keywords='ethereum',
+    keywords="ethereum",
     packages=find_packages(exclude=["tests", "tests.*"]),
     package_data={"web3": ["py.typed"]},
     classifiers=[
-        'Development Status :: 5 - Production/Stable',
-        'Intended Audience :: Developers',
-        'License :: OSI Approved :: MIT License',
-        'Natural Language :: English',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8',
-        'Programming Language :: Python :: 3.9',
-        'Programming Language :: Python :: 3.10',
+        "Development Status :: 5 - Production/Stable",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: MIT License",
+        "Natural Language :: English",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
     ],
 )
