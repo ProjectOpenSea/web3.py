@@ -66,7 +66,7 @@ with open('./README.md') as readme:
 setup(
     name='web3',
     # *IMPORTANT*: Don't manually change the version here. Use the 'bumpversion' utility.
-    version='5.29.2',
+    version='5.29.2.dev0',
     description="""Web3.py""",
     long_description_content_type='text/markdown',
     long_description=long_description,
@@ -90,7 +90,7 @@ setup(
         "requests>=2.16.0,<3.0.0",
         # remove typing_extensions after python_requires>=3.8, see web3._utils.compat
         "typing-extensions>=3.7.4.1,<5;python_version<'3.8'",
-        "websockets>=9.1,<10",
+        "websockets>=9.1",
     ],
     python_requires='>=3.6,<4',
     extras_require=extras_require,
